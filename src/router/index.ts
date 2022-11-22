@@ -1,0 +1,14 @@
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router"
+import dayjs from "dayjs"
+const modules = import.meta.glob("../views/*/*.vue")
+const routes: RouteRecordRaw[] = Object.keys(modules).map((item: any) => {
+  const path = `/${item.split("/")[2]}`,
+    component = modules[item]
+  return { path, component }
+})
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
+
+export default router

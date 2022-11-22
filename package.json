@@ -10,10 +10,18 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "vue": "^3.2.41"
+    "dayjs": "^1.11.6",
+    "lodash-es": "^4.17.21",
+    "pinia": "^2.0.25",
+    "vant": "^3.6.5",
+    "vue": "^3.2.41",
+    "vue-router": "4"
   },
   "lint-staged": {
-    "src/**/*.{js,json,less,vue,ts}":["prettier --write", "eslint --fix"]
+    "src/**/*.{js,json,less,vue,ts}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   },
   "config": {
     "commitizen": {
@@ -32,9 +40,13 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.7.0",
     "husky": "^8.0.2",
+    "less": "^4.1.3",
     "lint-staged": "^13.0.3",
+    "postcss-px-to-viewport": "^1.1.1",
     "prettier": "^2.7.1",
     "typescript": "^4.6.4",
+    "unplugin-auto-import": "^0.11.5",
+    "unplugin-vue-components": "^0.22.11",
     "vite": "^3.2.3",
     "vue-tsc": "^1.0.9"
   }
