@@ -2,7 +2,6 @@
   "name": "vue3-vite",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "start": "vite --open",
     "dev": "vite",
@@ -14,12 +13,7 @@
     "vue": "^3.2.41"
   },
   "lint-staged": {
-    "*.{scss,vue}": [
-      "stylelint --fix"
-    ],
-    "*.{js,ts,vue}": [
-      "vue-cli-service lint"
-    ]
+    "src/**/*.{js,json,less,vue,ts}":["prettier --write", "eslint --fix"]
   },
   "config": {
     "commitizen": {
