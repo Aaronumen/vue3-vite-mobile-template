@@ -5,7 +5,6 @@ import path from "path"
 import postcsspxtoviewport from "postcss-px-to-viewport"
 import Components from "unplugin-vue-components/vite"
 import { VantResolver } from "unplugin-vue-components/resolvers"
-import dayjs from "dayjs"
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
