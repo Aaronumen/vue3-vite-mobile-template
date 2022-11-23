@@ -10,6 +10,8 @@
     "createApp": true,
     "createPinia": true,
     "customRef": true,
+    "dayjs": true,
+    "debouce": true,
     "defineAsyncComponent": true,
     "defineComponent": true,
     "defineStore": true,
