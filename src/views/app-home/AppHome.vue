@@ -1,8 +1,9 @@
 <template>
   <div class="home-app">首页</div>
 </template>
-<script setup lang="ts"></script>
-
+<script setup lang="ts">
+console.log(import.meta.env)
+</script>
 <style lang="less" scoped>
 .home-app {
   height: 100px;

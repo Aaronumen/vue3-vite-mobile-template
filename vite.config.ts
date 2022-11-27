@@ -22,7 +22,7 @@ export default defineConfig({
         {
           vant: ["Toast", "Dialog", "Notify", "ImagePreview"], //函数式组件需要特别解构不支持按需引入
           "lodash-es": ["debouce"],
-          dayjs:[['default','dayjs']]
+          dayjs: [["default", "dayjs"]]
         }
         // 自定义导入的api
       ],
