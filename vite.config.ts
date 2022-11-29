@@ -5,6 +5,8 @@ import path from "path"
 import postcsspxtoviewport from "postcss-px-to-viewport"
 import Components from "unplugin-vue-components/vite"
 import { VantResolver } from "unplugin-vue-components/resolvers"
+import commpressPlugin from 'vite-plugin-compression'
+import { visualizer } from 'rollup-plugin-visualizer';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -32,7 +34,22 @@ export default defineConfig({
         globalsPropValue: true // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
       },
       dts: "./auto-imports.d.ts"
-    })
+    }),
+    commpressPlugin({
+      verbose: true, // 默认即可
+      disable: false, //开启压缩(不禁用)，默认即可
+      deleteOriginFile: false, //删除源文件
+      threshold: 10240, //压缩前最小文件大小
+      algorithm: 'gzip', //压缩算法
+      ext: '.gz' //文件类型
+    }),
+    visualizer({
+      gzipSize: true,
+      brotliSize: true,
+      emitFile: false,
+      filename: "buildSize.html", //分析图生成的文件名
+      open:false //如果存在本地服务端口，将在打包后自动展示
+    }),
   ],
   css: {
     postcss: {
@@ -60,6 +77,27 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
       components: path.resolve(__dirname, "src/components"),
       views: path.resolve(__dirname, "src/views")
+    }
+  },
+  build:{
+    assetsInlineLimit:4096,
+    // sourcemap:true,
+    rollupOptions: {
+      output: {
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+        manualChunks(id) {
+          console.log(id);
+          if (id.includes('node_modules/.pnpm')) {
+            return id
+              .toString()
+              .split('node_modules/.pnpm/')[1]
+              .split('/')[0]
+              .toString()
+          }
+        }
+      }
     }
   }
 })
