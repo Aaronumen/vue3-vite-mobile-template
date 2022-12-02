@@ -5,7 +5,7 @@
   "scripts": {
     "start": "vite --open",
     "dev": "vite",
-    "build": "vue-tsc --noEmit --skipLibCheck && vite build",
+    "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "prepare": "husky install",
     "lint": "eslint . --ext .js,.vue,.ts,.tsx --fix"
