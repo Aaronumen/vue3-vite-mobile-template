@@ -1,6 +1,9 @@
 export default defineComponent({
   setup() {
     const demo = ref("demo page")
-    return () => <div>{demo.value}</div>
+    const test=ref('test')
+    return () => <div>{demo.value}
+    <div>{test.value}</div>
+    </div>
   }
 })
