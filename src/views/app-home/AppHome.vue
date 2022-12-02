@@ -1,7 +1,11 @@
 <template>
-  <div class="home-app">首页</div>
+  <div class="home-app">
+    首页
+    <Demo></Demo>
+  </div>
 </template>
 <script setup lang="ts">
+import Demo from "@/components/demo"
 console.log(import.meta.env)
 </script>
 <style lang="less" scoped>

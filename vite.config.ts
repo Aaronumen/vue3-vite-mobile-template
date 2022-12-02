@@ -7,10 +7,12 @@ import Components from "unplugin-vue-components/vite"
 import { VantResolver } from "unplugin-vue-components/resolvers"
 import commpressPlugin from 'vite-plugin-compression'
 import { visualizer } from 'rollup-plugin-visualizer';
+import vueJsx from '@vitejs/plugin-vue-jsx'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    vueJsx({}),
     Components({
       resolvers: [VantResolver()]
     }),
@@ -51,6 +53,9 @@ export default defineConfig({
       open:false //如果存在本地服务端口，将在打包后自动展示
     }),
   ],
+  esbuild: {
+    jsxInject: `import React from 'react'`
+  },
   css: {
     postcss: {
       plugins: [
