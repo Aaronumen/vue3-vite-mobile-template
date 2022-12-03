@@ -20,7 +20,7 @@
     "vue-router": "4"
   },
   "lint-staged": {
-    "src/**/*.{js,json,less,vue,ts}": [
+    "src/**/*.{js,json,vue,ts,tsx}": [
       "prettier --write",
       "pnpm lint"
     ]
