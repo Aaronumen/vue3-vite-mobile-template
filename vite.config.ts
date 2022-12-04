@@ -60,9 +60,11 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         modifyVars: {
-          hack: `true; @import (reference) "${path.resolve('src/styles/global.less')}";`,
-        },
-      },
+          hack: `true; @import (reference) "${path.resolve(
+            "src/styles/global.less"
+          )}";`
+        }
+      }
     },
     postcss: {
       plugins: [
