@@ -1,4 +1,3 @@
-import "./demo.less"
 import styles from "./demo.module.less"
 export default defineComponent({
   setup() {

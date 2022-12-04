@@ -57,6 +57,13 @@ export default defineConfig({
     jsxInject: `import React from 'react'`
   },
   css: {
+    preprocessorOptions: {
+      less: {
+        modifyVars: {
+          hack: `true; @import (reference) "${path.resolve('src/styles/global.less')}";`,
+        },
+      },
+    },
     postcss: {
       plugins: [
         postcsspxtoviewport({
