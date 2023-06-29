@@ -8,10 +8,12 @@ import { VantResolver } from "unplugin-vue-components/resolvers"
 import commpressPlugin from "vite-plugin-compression"
 import { visualizer } from "rollup-plugin-visualizer"
 import vueJsx from "@vitejs/plugin-vue-jsx"
+import UnoCSS from "unocss/vite"
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    UnoCSS(),
     vueJsx({}),
     Components({
       resolvers: [VantResolver()]
@@ -24,7 +26,7 @@ export default defineConfig({
         "vue-router",
         "pinia",
         {
-          vant: ["Toast", "Dialog", "Notify", "ImagePreview"], //函数式组件需要特别解构不支持按需引入
+          vant: ["showToast", "showDialog", "showNotify", "showImagePreview"], //函数式组件需要特别解构不支持按需引入
           "lodash-es": ["debouce"],
           dayjs: [["default", "dayjs"]]
         }
@@ -53,9 +55,6 @@ export default defineConfig({
       open: false //如果存在本地服务端口，将在打包后自动展示
     })
   ],
-  esbuild: {
-    jsxInject: `import React from 'react'`
-  },
   css: {
     preprocessorOptions: {
       less: {
@@ -102,7 +101,6 @@ export default defineConfig({
         entryFileNames: "assets/js/[name]-[hash].js",
         assetFileNames: "assets/[ext]/[name]-[hash].[ext]",
         manualChunks(id) {
-          console.log(id)
           if (id.includes("node_modules/.pnpm")) {
             return id
               .toString()

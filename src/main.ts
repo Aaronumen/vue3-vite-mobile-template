@@ -7,6 +7,8 @@ import "vant/es/dialog/style"
 import "vant/es/notify/style"
 // ImagePreview
 import "vant/es/image-preview/style"
+// main.ts
+import "virtual:uno.css"
 import App from "./App.vue"
 import router from "@/router"
 createApp(App).use(router).mount("#app")

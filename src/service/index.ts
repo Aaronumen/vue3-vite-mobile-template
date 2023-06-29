@@ -1,9 +1,4 @@
-import axios, {
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosError,
-  AxiosResponse
-} from "axios"
+import axios, { AxiosInstance, AxiosError, AxiosResponse } from "axios"
 
 const service: AxiosInstance = axios.create({
   url: import.meta.env.VITE_BASEURL,
@@ -12,11 +7,11 @@ const service: AxiosInstance = axios.create({
 
 /* 请求拦截器 */
 service.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
+  config => {
     return config
   },
   (error: AxiosError) => {
-    Toast(error)
+    showToast(error)
     return Promise.reject(error)
   }
 )
@@ -35,27 +30,27 @@ service.interceptors.response.use(
   },
   (error: AxiosError) => {
     // 处理 HTTP 网络错误
-    let message = ""
+    let messages = ""
     // HTTP 状态码
     const status = error.response?.status
     switch (status) {
       case 401:
-        message = "token 失效，请重新登录"
+        messages = "token 失效，请重新登录"
         // 这里可以触发退出的 action
         break
       case 403:
-        message = "拒绝访问"
+        messages = "拒绝访问"
         break
       case 404:
-        message = "请求地址错误"
+        messages = "请求地址错误"
         break
       case 500:
-        message = "服务器故障"
+        messages = "服务器故障"
         break
       default:
-        message = "网络连接故障"
+        messages = "网络连接故障"
     }
-    Toast(message)
+    showToast(messages)
     return Promise.reject(error)
   }
 )

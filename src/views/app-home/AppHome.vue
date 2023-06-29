@@ -1,5 +1,5 @@
 <template>
-  <div class="home-app">
+  <div class="home-app bg-red">
     首页
     <Demo></Demo>
   </div>
